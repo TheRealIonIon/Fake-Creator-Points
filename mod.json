@@ -1,0 +1,22 @@
+{
+	"geode": "5.9.0",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "ionion.fakecreatorpoints",
+	"name": "Fake Creator Points",
+	"version": "v1.0.0",
+	"developer": "Ion Ion",
+	"description": "Customize the amount of creator points for any user",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0"
+	},
+	"resources": {
+		"sprites": [
+			"prev/*.png"
+		]
+	}
+}
