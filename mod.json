@@ -8,7 +8,7 @@
 	},
 	"id": "ionion.fakecreatorpoints",
 	"name": "Fake Creator Points",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "Ion Ion",
 	"description": "Customize the amount of creator points for any user",
 	"dependencies": {

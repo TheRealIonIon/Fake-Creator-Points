@@ -142,22 +142,3 @@ class $modify(GJScoreCell) {
 		userScore->m_creatorPoints = oldPts;
 	}
 };
-
-// Forced char limit and filter because of mod menus bypass
-// This replicates the vanilla behaviour btw (char filter)
-class $modify(CCTextInputNode) {
-	void updateLabel(gd::string labelText) {
-		if (auto customPopup = CCScene::get()->getChildByID("EditCreatorPointsPopup")) {
-			std::string countText = labelText;
-			
-			for (int charIdx = 0; charIdx < countText.length(); charIdx++) {
-				if (!std::isdigit(countText[charIdx])) countText.erase(charIdx--, 1);
-			}
-
-			labelText = countText.substr(0, 9);
-			this->setString(labelText);
-		}
-
-		CCTextInputNode::updateLabel(labelText);
-	}
-};
