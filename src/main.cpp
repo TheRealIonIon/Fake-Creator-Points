@@ -1,7 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/ProfilePage.hpp>
 #include <Geode/modify/GJScoreCell.hpp>
-#include <Geode/modify/CCTextInputNode.hpp>
 
 using namespace geode::prelude;
 
@@ -46,12 +45,26 @@ protected:
 			this, menu_selector(EditCreatorPointsPopup::onClear)
 		);
 
-		clearBtn->setScale(0.85f);
-		clearBtn->m_baseScale = 0.85f;
+		clearBtn->setScale(0.875f);
+		clearBtn->m_baseScale = 0.875f;
 
 		m_mainLayer->addChildAtPosition(m_textBox, Anchor::Center, { 0.f, 5.f });
 		m_buttonMenu->addChildAtPosition(saveBtn, Anchor::Center, { 0.f, -45.f });
 		m_buttonMenu->addChildAtPosition(clearBtn, Anchor::TopRight, { -2.5f, -2.5f});
+
+		auto leftArrow = CCMenuItemSpriteExtra::create(
+			CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png"),
+			this, menu_selector(EditCreatorPointsPopup::onDecrement)
+		);
+
+		auto rightArrow = CCMenuItemSpriteExtra::create(
+			CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png"),
+			this, menu_selector(EditCreatorPointsPopup::onIncrement)
+		);
+
+		rightArrow->getChildByType<CCSprite>()->setFlipX(true);
+		m_buttonMenu->addChildAtPosition(leftArrow, Anchor::Center, { -75.f, 5.f });
+		m_buttonMenu->addChildAtPosition(rightArrow, Anchor::Center, { 75.f, 5.f });
 
 		return true;
 	}
@@ -73,6 +86,16 @@ protected:
 
 	void onClear(CCObject* clearBtn) {
 		m_textBox->setString("");
+	}
+
+	void onDecrement(CCObject* leftArrow) {
+		auto curVal = numFromString<int>(m_textBox->getString()).unwrapOr(0);
+		if (curVal > 0) m_textBox->setString(numToString(curVal - 1));
+	}	
+	
+	void onIncrement(CCObject* rightArrow) {
+		auto curVal = numFromString<int>(m_textBox->getString()).unwrapOr(0);
+		if (curVal < 999999999) m_textBox->setString(numToString(curVal + 1));
 	}
 
 public:

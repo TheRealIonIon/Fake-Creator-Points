@@ -8,11 +8,15 @@
 	},
 	"id": "ionion.fakecreatorpoints",
 	"name": "Fake Creator Points",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "Ion Ion",
 	"description": "Customize the amount of creator points for any user",
+	"tags": ["customization", "interface", "online"],
 	"dependencies": {
 		"geode.node-ids": ">=v1.20.0"
+	},	
+	"links": {
+		"source": "https://github.com/TheRealIonIon/Fake-Creator-Points"
 	},
 	"resources": {
 		"sprites": [
